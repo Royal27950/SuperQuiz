@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">SuperQuiz</string>
+    <string name="id"> Identifiant</string>
+    <string name="mdp"> Mot de passe </string>
+    <string name="connect"> Se connecter</string>
+    <string name="create"> Créer</string>
+    <string name="alreadyAccount"> Vous avez déjà un compte ? Connectez-vous ! </string>
+    <string name="createYourAccount">Créer votre compte</string>
+    <string name="login">Connectez-vous !</string>
+    <string name="newUser">Vous êtes nouveau ? Créez un compte !</string>
+    <string name="modeCG">Culture générale</string>
+    <string name="modeManga">Manga</string>
+    <string name="modeMarques">Marques</string>
+    <string name="modeSeries">Séries</string>
+    <string name="modeFilms">Films</string>
+    <string name="classement">Classement</string>
+    <string name="deconnexion">Déconnexion</string>
+    <string name="forgetPwd">Mot de passe oublié ?</string>
+</resources>

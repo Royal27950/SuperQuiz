@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "533713380408",
+    "project_id": "super-quiz-7362c",
+    "storage_bucket": "super-quiz-7362c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:533713380408:android:3b8443b59c06778ba4f2cd",
+        "android_client_info": {
+          "package_name": "com.example.superquiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "533713380408-aqrljfn6e5uv9dbj69impiglpcme94tp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAD53vrNvZ_JySWD2P9H7UcJEOR300Oxik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "533713380408-aqrljfn6e5uv9dbj69impiglpcme94tp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
