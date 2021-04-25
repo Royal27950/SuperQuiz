@@ -96,6 +96,7 @@ public class Connect extends AppCompatActivity {
                         if (task.isSuccessful()){
                             Toast.makeText(Connect.this, "Vous êtes connecté", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            //finish();
                         }else{
                             Toast.makeText(Connect.this, "Erreur !" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
@@ -152,7 +153,7 @@ public class Connect extends AppCompatActivity {
         if(view.getId()==R.id.show_pass_btn){
 
             if(userPassword.getTransformationMethod().equals(PasswordTransformationMethod.getInstance())){
-                ((ImageView)(view)).setImageResource(R.drawable.show_password);
+                ((ImageView)(view)).setImageResource(R.drawable.hide_password);
 
                 //Show Password
                 userPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
