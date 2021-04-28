@@ -8,7 +8,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/iconsuperquiz"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/iconsuperquiz"
+        android:roundIcon="@mipmap/logoicon"
         android:supportsRtl="true"
         android:theme="@style/Theme.SuperQuiz">
         <activity android:name=".SplashScreen">

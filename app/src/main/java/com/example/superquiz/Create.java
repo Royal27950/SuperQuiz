@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ public class Create extends AppCompatActivity {
     Button createButton;
     TextView loginText;
     FirebaseAuth fAuth;
+    ProgressBar progressBar;
 
 
     @Override
@@ -41,6 +43,7 @@ public class Create extends AppCompatActivity {
         userPassword    = findViewById(R.id.userPassword);
         createButton    = findViewById(R.id.createButton);
         loginText       = findViewById(R.id.loginText);
+        progressBar = findViewById(R.id.progressBar);
 
         fAuth = FirebaseAuth.getInstance();
 
@@ -74,6 +77,9 @@ public class Create extends AppCompatActivity {
                     return;
                 }
 
+                //Rend la bar de chargement visible (qui est invisible par défaut)
+                progressBar.setVisibility(View.VISIBLE);
+
                 //Créer le compte dans Firebase
                 fAuth.createUserWithEmailAndPassword(id, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -83,6 +89,7 @@ public class Create extends AppCompatActivity {
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         }else{
                             Toast.makeText(Create.this, "Erreur !" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.GONE);
                         }
                     }
                 });
