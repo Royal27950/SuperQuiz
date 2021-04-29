@@ -8,7 +8,8 @@
         </solid>
 
         <stroke
-            android:color="@color/black" >
+            android:color="@color/black"
+            android:background="@color/bluebtn">
         </stroke>
 
         <padding

@@ -25,7 +25,7 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/lemon_friday"
+            android:fontFamily="@font/sono"
             android:text="@string/login"
             android:layout_marginTop="15dp"
             android:textAlignment="center"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Create"
-    android:background="@drawable/background_gradient"
+    android:background="@color/blue"
     android:screenOrientation="portrait">
 
     <LinearLayout
@@ -23,7 +23,7 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/lemon_friday"
+            android:fontFamily="@font/sono"
             android:textAlignment="center"
             android:text="@string/createYourAccount"
             android:layout_marginTop="15dp"
@@ -59,10 +59,12 @@
 
         <Button
             android:id="@+id/createButton"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="@string/create"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center"
+            android:background="@drawable/formebtn"/>
 
         <TextView
             android:id="@+id/loginText"
@@ -72,7 +74,7 @@
             android:textSize="10sp"
             android:text="@string/alreadyAccount"
             android:textAlignment="center"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="20dp"
             android:onClick="connect"/>
     </LinearLayout>
 
