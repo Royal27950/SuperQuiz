@@ -6,7 +6,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/iconsuperquiz"
+        android:icon="@mipmap/logoicon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/logoicon"
         android:supportsRtl="true"

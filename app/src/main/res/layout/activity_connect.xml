@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Connect"
-    android:background="@drawable/background_gradient"
+    android:background="@color/blue"
     android:screenOrientation="portrait">
 
     <LinearLayout
@@ -25,8 +25,9 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/bubblegum_sans"
+            android:fontFamily="@font/arbutus"
             android:text="@string/login"
+            android:layout_marginTop="15dp"
             android:textAlignment="center"
             android:textSize="15sp" />
 
@@ -34,7 +35,7 @@
             android:id="@+id/userID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:ems="10"
             android:hint="Identifiant"
             android:inputType="textPersonName" />
@@ -75,10 +76,11 @@
 
         <Button
             android:id="@+id/connectBtn"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:background="@color/blue"
+            android:layout_gravity="center"
+            android:background="@drawable/formebtn"
             android:text="@string/connect" />
 
         <TextView
