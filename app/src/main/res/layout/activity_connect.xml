@@ -25,11 +25,11 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/arbutus"
+            android:fontFamily="@font/lemon_friday"
             android:text="@string/login"
             android:layout_marginTop="15dp"
             android:textAlignment="center"
-            android:textSize="15sp" />
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/userID"

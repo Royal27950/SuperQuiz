@@ -23,9 +23,11 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/bubblegum_sans"
+            android:fontFamily="@font/lemon_friday"
             android:textAlignment="center"
-            android:text="@string/createYourAccount" />
+            android:text="@string/createYourAccount"
+            android:layout_marginTop="15dp"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/userID"
@@ -35,7 +37,7 @@
             android:inputType="textPersonName"
             android:textColor="@color/black"
             android:hint="@string/id"
-            android:layout_marginTop="50dp"/>
+            android:layout_marginTop="20dp"/>
 
         <EditText
             android:id="@+id/userPassword"
