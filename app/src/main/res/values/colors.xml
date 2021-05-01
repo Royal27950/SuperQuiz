@@ -10,4 +10,6 @@
     <color name="blue">#6A99E0</color>
     <color name="grey">#454545</color>
     <color name="bluebtn">#5078B4</color>
+    <color name="good">#30BB19</color>
+    <color name="wrong">#E4310A</color>
 </resources>

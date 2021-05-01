@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/blue">
 
 
 
@@ -17,62 +18,56 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/generalCulture"
+            <ImageButton
+                android:id="@+id/attackOnTitan"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:text="@string/modeGC"
-                android:onClick="goGeneralCulture">
+                android:onClick="goGeneralCulture"
+                android:src="@drawable/logo_attack_on_titan"
+                android:scaleType="fitCenter">
 
-            </Button>
-            <Button
-                android:id="@+id/manga"
+            </ImageButton>
+            <ImageButton
+                android:id="@+id/pokemon"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:text="@string/modeManga"
-                android:onClick="goManga">
+                android:onClick="goManga"
+                android:src="@drawable/logo_pokemon"
+                android:scaleType="fitCenter">
 
-            </Button>
-            <Button
-                android:id="@+id/brand"
+            </ImageButton>
+            <ImageButton
+                android:id="@+id/tokyoGhoul"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:text="@string/modeBrand"
-                android:onClick="goBrand">
+                android:onClick="goBrand"
+                android:src="@drawable/logo_tokyo_ghoul"
+                android:scaleType="fitCenter">
 
-            </Button>
-            <Button
-                android:id="@+id/series"
+            </ImageButton>
+            <ImageButton
+                android:id="@+id/myHeroAcademia"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:text="@string/modeSeries"
-                android:onClick="goSeries">
+                android:onClick="goSeries"
+                android:src="@drawable/logo_my_hero_academia"
+                android:scaleType="fitCenter">
 
-            </Button>
-            <Button
-                android:id="@+id/movies"
+            </ImageButton>
+            <ImageButton
+                android:id="@+id/onePiece"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:text="@string/modeMovie"
-                android:onClick="goMovies">
+                android:onClick="goMovies"
+                android:src="@drawable/logo_one_piece"
+                android:scaleType="fitCenter">
 
-            </Button>
-            <Button
-                android:id="@+id/ranking"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:text="@string/ranking"
-                android:onClick="goRanking">
-
-            </Button>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:text="@string/deconnexion"
-                android:onClick="logout">
-
-            </Button>
+            </ImageButton>
         </LinearLayout>
 
     </ScrollView>
