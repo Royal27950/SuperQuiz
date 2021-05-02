@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".Manga"
     android:background="@color/blue">
 
 
@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:text="@string/modeGC"
-                android:onClick="goGeneralCulture"
+                android:onClick="goAttackOnTitan"
                 android:src="@drawable/logo_attack_on_titan"
                 android:scaleType="fitCenter">
 
@@ -33,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:text="@string/modeManga"
-                android:onClick="goManga"
+                android:onClick="goPokemon"
                 android:src="@drawable/logo_pokemon"
                 android:scaleType="fitCenter">
 
@@ -43,7 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:text="@string/modeBrand"
-                android:onClick="goBrand"
+                android:onClick="goTokyoGhoul"
                 android:src="@drawable/logo_tokyo_ghoul"
                 android:scaleType="fitCenter">
 
@@ -53,7 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:text="@string/modeSeries"
-                android:onClick="goSeries"
+                android:onClick="goMyHeroAcademia"
                 android:src="@drawable/logo_my_hero_academia"
                 android:scaleType="fitCenter">
 
@@ -63,7 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:text="@string/modeMovie"
-                android:onClick="goMovies"
+                android:onClick="goOnePiece"
                 android:src="@drawable/logo_one_piece"
                 android:scaleType="fitCenter">
 

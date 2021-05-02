@@ -13,13 +13,7 @@ public class History3 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history3);
-
-
     }
 
-    public void goQ4(View v){ startActivity(new Intent(getApplicationContext(), History4.class)); }
-
-
-
-
+    public void goQ4(View v){ startActivity(new Intent(getApplicationContext(), History4.class)); finish();}
 }

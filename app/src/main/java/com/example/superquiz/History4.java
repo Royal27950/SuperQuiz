@@ -14,10 +14,9 @@ public class History4 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history4);
-
     }
 
-    public void goQ5(View v){ startActivity(new Intent(getApplicationContext(), History5.class)); }
+    public void goQ5(View v){ startActivity(new Intent(getApplicationContext(), History5.class));finish(); }
 
 
 

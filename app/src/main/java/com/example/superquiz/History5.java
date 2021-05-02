@@ -13,13 +13,8 @@ public class History5 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history5);
-
-
     }
 
-    public void goMenu(View v){ startActivity(new Intent(getApplicationContext(), GeneralCulture.class)); }
-
-
-
+    public void goMenu(View v){ startActivity(new Intent(getApplicationContext(), GeneralCulture.class)); finish();}
 
 }

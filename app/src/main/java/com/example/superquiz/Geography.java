@@ -2,7 +2,9 @@ package com.example.superquiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 public class Geography extends AppCompatActivity {
 
@@ -11,4 +13,5 @@ public class Geography extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_geography);
     }
+    public void goQ2(View v){ startActivity(new Intent(getApplicationContext(), Geography2.class));finish(); }
 }

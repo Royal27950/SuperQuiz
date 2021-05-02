@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".Movies"
     android:background="@color/blue">
 
 
@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:text="@string/history"
-                android:onClick="goGeneralCulture"
+                android:onClick="goHarryPotter"
                 android:src="@drawable/logo_harry_potter"
                 android:scaleType="fitCenter">
 
@@ -33,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:text="@string/geography"
-                android:onClick="goManga"
+                android:onClick="goDeadpool"
                 android:src="@drawable/logo_deadpool"
                 android:scaleType="fitCenter">
 

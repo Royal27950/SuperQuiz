@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Brand">
 
 
 
@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:text="@string/guessLogo"
-                android:onClick="goGeneralCulture">
+                android:onClick="goGuessTheLogo">
 
             </Button>
             <Button
@@ -30,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:text="@string/guessSlogan"
-                android:onClick="goManga">
+                android:onClick="goGuessTheSlogan">
 
             </Button>
 

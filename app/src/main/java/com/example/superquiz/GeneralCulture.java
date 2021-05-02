@@ -14,6 +14,6 @@ public class GeneralCulture extends AppCompatActivity {
         setContentView(R.layout.activity_general_culture);
     }
 
-    public void goHistory(View v){ startActivity(new Intent(getApplicationContext(), History.class)); }
-    public void goGeography(View v){ startActivity(new Intent(getApplicationContext(), Geography.class)); }
+    public void goHistory(View v){ startActivity(new Intent(getApplicationContext(), History.class));finish(); }
+    public void goGeography(View v){ startActivity(new Intent(getApplicationContext(), Geography.class)); finish();}
 }
