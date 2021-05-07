@@ -69,7 +69,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:text="@string/attack_on_titanR1_1">
+            android:text="@string/attack_on_titanR1_1"
+            android:onClick="onClick">
 
         </Button>
         <Button

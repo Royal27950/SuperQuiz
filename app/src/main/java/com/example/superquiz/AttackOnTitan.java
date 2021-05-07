@@ -1,93 +1,82 @@
 package com.example.superquiz;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class AttackOnTitan extends AppCompatActivity {
 
-    private TextView textViewQuestion;
-    private TextView textViewScore;
-    private TextView textViewQuestionCount;
-    private TextView textViewCountDown;
-    private Button choice1;
-    private Button choice2;
-    private Button choice3;
-    private Button choice4;
+    private AttackOnTitanQuestionBank mQuestionLibrary = new AttackOnTitanQuestionBank();
 
-    private ColorStateList textColorDefaultrb;
+    private TextView mScoreView;   // view for current total score
+    private TextView mQuestionView;  //current question to answer
+    private Button mButtonChoice1; // multiple choice 1 for mQuestionView
+    private Button mButtonChoice2; // multiple choice 2 for mQuestionView
+    private Button mButtonChoice3; // multiple choice 3 for mQuestionView
+    private Button mButtonChoice4; // multiple choice 4 for mQuestionView
 
+    private String mAnswer;  // correct answer for question in mQuestionView
+    private int mScore = 0;  // current total score
+    private int mQuestionNumber = 0; // current question number
 
-    private List<AttackOnTitanQuestion> attackOnTitanQuestionList;
-    private int questionCounter;
-    private int questionCountTotal;
-    private AttackOnTitanQuestion currentQuestion;
-
-    private int score;
-    private boolean answered;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attack_on_titan);
+        // setup screen for the first question with four alternative to answer
+        mScoreView = (TextView)findViewById(R.id.score);
+        mQuestionView = (TextView)findViewById(R.id.question);
+        mButtonChoice1 = (Button)findViewById(R.id.r1);
+        mButtonChoice2 = (Button)findViewById(R.id.r2);
+        mButtonChoice3 = (Button)findViewById(R.id.r3);
+        mButtonChoice4 = (Button)findViewById(R.id.r4);
 
-        textViewQuestion = findViewById(R.id.question);
-        textViewScore = findViewById(R.id.score);
-        textViewQuestionCount = findViewById(R.id.count);
-        textViewCountDown = findViewById(R.id.countdown);
-        choice1 = findViewById(R.id.r1);
-        choice2 = findViewById(R.id.r2);
-        choice3 = findViewById(R.id.r3);
-        choice4 = findViewById(R.id.r4);
-
-
-
-        QuizDbHelper dbHelper = new QuizDbHelper(this);
-        attackOnTitanQuestionList = dbHelper.getAllQuestion();
-        questionCountTotal = attackOnTitanQuestionList.size();
-        Collections.shuffle(attackOnTitanQuestionList);
-
-        showNextQuestion();
-
-        choice1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               /* if (choice1.equals(currentQuestion.getAnswerNumber())) {
-                    score++;
-                    textViewScore.setText("Score : " +score);
-                    showNextQuestion();
-                }*/showNextQuestion();
-            }
-        });
+        mQuestionLibrary.initQuestions(getApplicationContext());
+        updateQuestion();
+        // show current total score for the user
+        updateScore(mScore);
     }
-    private void showNextQuestion(){
 
-        if (questionCounter < questionCountTotal){
-            currentQuestion = attackOnTitanQuestionList.get(questionCounter);
+    private void updateQuestion(){
+        // check if we are not outside array bounds for questions
+        if(mQuestionNumber<mQuestionLibrary.getLength() ){
+            // set the text for new question,
+            // and new 4 alternative to answer on four buttons
+            mQuestionView.setText(mQuestionLibrary.getQuestion(mQuestionNumber));
+            mButtonChoice1.setText(mQuestionLibrary.getChoice(mQuestionNumber, 1));
+            mButtonChoice2.setText(mQuestionLibrary.getChoice(mQuestionNumber, 2));
+            mButtonChoice3.setText(mQuestionLibrary.getChoice(mQuestionNumber, 3));
+            mButtonChoice4.setText(mQuestionLibrary.getChoice(mQuestionNumber,4));
 
-            textViewQuestion.setText(currentQuestion.getQuestion());
-            choice1.setText(currentQuestion.getOption1());
-            choice2.setText(currentQuestion.getOption2());
-            choice3.setText(currentQuestion.getOption3());
-            choice4.setText(currentQuestion.getOption4());
-
-            questionCounter++;
-            textViewQuestionCount.setText("Question " + questionCounter + "/" + questionCountTotal);
-        }else{
-            finishQuiz();
+            mAnswer = mQuestionLibrary.getCorrectAnswer(mQuestionNumber);
+            mQuestionNumber++;
+        }
+        else {
+            finish();
         }
     }
-    public void finishQuiz(){
-        finish();
+
+    // show current total score for the user
+    private void updateScore(int point) {
+        mScoreView.setText(""+mScore+"/"+mQuestionLibrary.getLength());
     }
-    //public void goQ2(View v){ startActivity(new Intent(getApplicationContext(), AttackOnTitan2.class));finish(); }
+
+    public void onClick(View view) {
+        //all logic for all answers buttons in one method
+        Button answer = (Button) view;
+        // if the answer is correct, increase the score
+        if (answer.getText().equals(mAnswer)){
+            mScore = mScore + 1;
+            Toast.makeText(AttackOnTitan.this, "Correct!", Toast.LENGTH_SHORT).show();
+
+        }else
+            Toast.makeText(AttackOnTitan.this, "Wrong!", Toast.LENGTH_SHORT).show();
+        // show current total score for the user
+        updateScore(mScore);
+        // once user answer the question, we move on to the next one, if any
+        updateQuestion();
+    }
 }
