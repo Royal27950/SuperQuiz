@@ -1,5 +1,8 @@
 package com.example.superquiz;
+import android.content.Context;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -67,13 +70,21 @@ public class MyHeroAcademia extends AppCompatActivity {
     public void onClick(View view) {
         //all logic for all answers buttons in one method
         Button answer = (Button) view;
+        MediaPlayer mp = MediaPlayer.create(this, R.raw.ding);
         // if the answer is correct, increase the score
-        if (answer.getText().equals(mAnswer)){
+        if (answer.getText().equals(mAnswer)) {
             mScore = mScore + 1;
+            mp.start();
             Toast.makeText(MyHeroAcademia.this, "Vrai !", Toast.LENGTH_SHORT).show();
 
-        }else
+        } else{
             Toast.makeText(MyHeroAcademia.this, "Faux !", Toast.LENGTH_SHORT).show();
+            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
+            // Vibrate for 400 milliseconds
+            v.vibrate(400);
+        }
+
         // show current total score for the user
         updateScore(mScore);
         // once user answer the question, we move on to the next one, if any
