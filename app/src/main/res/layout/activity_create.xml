@@ -39,15 +39,33 @@
             android:hint="@string/id"
             android:layout_marginTop="20dp"/>
 
-        <EditText
-            android:id="@+id/userPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPassword"
-            android:textColor="@color/black"
-            android:hint="@string/mdp"
-            android:layout_marginTop="10dp"/>
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/userPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:textColor="@color/black"
+                android:hint="@string/mdp"
+                android:layout_marginTop="10dp"/>
+
+            <ImageView
+                android:id="@+id/show_pass_btn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:alpha=".5"
+                android:onClick="showHidePass"
+                android:padding="5dp"
+                android:src="@drawable/show_password" />
+        </RelativeLayout>
+
 
         <ProgressBar
             android:id="@+id/progressBar"

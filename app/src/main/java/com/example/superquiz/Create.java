@@ -8,9 +8,12 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -96,6 +99,27 @@ public class Create extends AppCompatActivity {
             }
         });
 
+    }
+
+    //Au clique de l'image "oeil" permet de voir ou de cacher le champ mot de passe
+    public void showHidePass(View view){
+
+        if(view.getId()==R.id.show_pass_btn){
+
+            if(userPassword.getTransformationMethod().equals(PasswordTransformationMethod.getInstance())){
+                ((ImageView)(view)).setImageResource(R.drawable.hide_password);
+
+                //Show Password
+                userPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            }
+            else{
+                ((ImageView)(view)).setImageResource(R.drawable.show_password);
+
+                //Hide Password
+                userPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
+            }
+        }
     }
 
     //Au clique du bouton "Déconnexion" déconnecte l'utilisateur et le renvoie à la page de connexion
