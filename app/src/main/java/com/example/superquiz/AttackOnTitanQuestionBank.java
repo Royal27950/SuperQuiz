@@ -38,21 +38,21 @@ public class AttackOnTitanQuestionBank {
 
     public void initQuestions(Context context) {
         myDataBaseHelper = new QuizDbHelper(context);
-        list = myDataBaseHelper.getAllQuestionsList();//get questions/choices/answers from database
+        list = myDataBaseHelper.getAllQuestionsListAttackOnTitan();//get questions/choices/answers from database
 
         if (list.isEmpty()) {//if list is empty, populate database with default questions/choices/answers
-            myDataBaseHelper.addInitialQuestion(new AttackOnTitanQuestion("1. When did Google acquire Android ?",
-                    new String[]{"2001", "2003", "2004", "2005"}, "2005"));
-            myDataBaseHelper.addInitialQuestion(new AttackOnTitanQuestion("2. What is the name of build toolkit for Android Studio?",
-                    new String[]{"JVM", "Gradle", "Dalvik", "HAXM"}, "Gradle"));
-            myDataBaseHelper.addInitialQuestion(new AttackOnTitanQuestion("3. What widget can replace any use of radio buttons?",
-                    new String[]{"Toggle Button", "Spinner", "Switch Button", "ImageButton"}, "Spinner"));
-            myDataBaseHelper.addInitialQuestion(new AttackOnTitanQuestion("4. What is a widget in Android app?",
-                    new String[]{"reusable GUI element", "Layout for Activity", "device placed in cans of beer", "build toolkit"}, "reusable GUI element"));
-            myDataBaseHelper.addInitialQuestion(new AttackOnTitanQuestion("5. What is a widget in Android app?",
-                    new String[]{"reusable GUI element", "Layout for Activity", "device placed in cans of beer", "build toolkit"}, "reusable GUI element"));
+            myDataBaseHelper.addInitialQuestionAttackOnTitan(new AttackOnTitanQuestion("Quel Titan n'existe pas ?",
+                    new String[]{"Le Bestial", "Le Mâchoire", "L'Armure", "Le Marteau"}, "L'Armure"));
+            myDataBaseHelper.addInitialQuestionAttackOnTitan(new AttackOnTitanQuestion("Qui tue la mère d'Eren Jäger ?",
+                    new String[]{"Dinah Fritz", "Eren Jäger", "Kenny", "Helmut Fritz"}, "Dinah Fritz"));
+            myDataBaseHelper.addInitialQuestionAttackOnTitan(new AttackOnTitanQuestion("Qui est le nouveau Colossal ?",
+                    new String[]{"Bertolt", "Mikasa", "Kenny", "Armin"}, "Armin"));
+            myDataBaseHelper.addInitialQuestionAttackOnTitan(new AttackOnTitanQuestion("Quel district se trouve au sain du mur Maria ?",
+                    new String[]{"District de Trost", "District de Stohess", "District de Shiganshina", "District d'Utopia"}, "District de Shiganshina"));
+            myDataBaseHelper.addInitialQuestionAttackOnTitan(new AttackOnTitanQuestion("Qui a tué Sasha ?",
+                    new String[]{"Reiner", "Gaby", "Livaï", "Sieg"}, "Gaby"));
 
-            list = myDataBaseHelper.getAllQuestionsList();//get list from database again
+            list = myDataBaseHelper.getAllQuestionsListAttackOnTitan();//get list from database again
 
         }
     }

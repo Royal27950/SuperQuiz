@@ -15,11 +15,11 @@ import java.util.List;
 public class QuizDbHelper extends SQLiteOpenHelper {
 
     // Database name
-    public static String DATABASE_QUESTION = "questionBank.db";
+    public static String DATABASE_QUESTION = "questionBankAttackOnTitan.db";
     // Current version of database
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 3;
     // Database table name
-    private static final String TABLE_QUESTION = "QuestionBank";
+    private static final String TABLE_QUESTION = "QuestionBankAttackOnTitan";
     // All fields used in database table
     private static final String KEY_ID = "id";
     private static final String QUESTION = "question";
@@ -59,15 +59,15 @@ public class QuizDbHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + CREATE_TABLE_QUESTION); // drop table if exists
+        db.execSQL(" DROP TABLE IF EXISTS " + TABLE_QUESTION); // drop table if exists
         onCreate(db);
     }
 
     /**
      * This method is used to add question detail in question Table
      */
-    public long addInitialQuestion (AttackOnTitanQuestion question) {
-        SQLiteDatabase db = this.getWritableDatabase();
+    public long addInitialQuestionAttackOnTitan (AttackOnTitanQuestion question) {
+        SQLiteDatabase attackOnTitanDb = this.getWritableDatabase();
         // Creating content values
         ContentValues values = new ContentValues();
         values.put(QUESTION, question.getQuestion());
@@ -77,7 +77,7 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         values.put(CHOICE4,  question.getChoice(3));
         values.put(ANSWER, question.getAnswer());
         // insert row in question table
-        long insert = db.insert(TABLE_QUESTION, null, values);
+        long insert = attackOnTitanDb.insert(TABLE_QUESTION, null, values);
         return insert;
     }
 
@@ -87,12 +87,12 @@ public class QuizDbHelper extends SQLiteOpenHelper {
      * To extract data from database and save it Arraylist of data type
      * Question
      */
-    public List<AttackOnTitanQuestion> getAllQuestionsList() {
+    public List<AttackOnTitanQuestion> getAllQuestionsListAttackOnTitan() {
         List<AttackOnTitanQuestion> questionArrayList = new ArrayList<>();
         String selectQuery = "SELECT  * FROM " + TABLE_QUESTION;
 
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = db.rawQuery(selectQuery, null);
+        SQLiteDatabase attackOnTitandb = this.getReadableDatabase();
+        Cursor c = attackOnTitandb.rawQuery(selectQuery, null);
 
         // looping through all records and adding to the list
         if (c.moveToFirst()) {

@@ -3,6 +3,5 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/arbutus</item>
         <item>@font/bubblegum_sans</item>
-        <item>@font/</item>
     </array>
 </resources>
