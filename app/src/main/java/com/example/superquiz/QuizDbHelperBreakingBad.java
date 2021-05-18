@@ -63,6 +63,8 @@ public class QuizDbHelperBreakingBad extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+
+
     /**
      * This method is used to add question detail in question Table
      */

@@ -1,5 +1,7 @@
 package com.example.superquiz;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -8,11 +10,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AttackOnTitan extends AppCompatActivity {
 
     private AttackOnTitanQuestionBank mQuestionLibrary = new AttackOnTitanQuestionBank();
+
+    //public static  final String EXTRA_SCORE = "extraScore";
 
     private TextView mScoreViewAttackOnTitan;   // view for current total score
     private TextView mQuestionView;  //current question to answer
@@ -24,6 +29,7 @@ public class AttackOnTitan extends AppCompatActivity {
     private String mAnswer;  // correct answer for question in mQuestionView
     private int mScore = 0;  // current total score
     private int mQuestionNumber = 0; // current question number
+    private AttackOnTitan activity;
 
 
     @Override
@@ -37,6 +43,7 @@ public class AttackOnTitan extends AppCompatActivity {
         mButtonChoice2 = (Button)findViewById(R.id.r2AttackOnTitan);
         mButtonChoice3 = (Button)findViewById(R.id.r3AttackOnTitan);
         mButtonChoice4 = (Button)findViewById(R.id.r4AttackOnTitan);
+        this.activity = this;
 
 
 
@@ -61,7 +68,19 @@ public class AttackOnTitan extends AppCompatActivity {
             mQuestionNumber++;
         }
         else {
-            finish();
+            AlertDialog.Builder viewScore = new AlertDialog.Builder(this);
+            viewScore.setTitle("Bravo !");
+            viewScore.setMessage("Vous avez eu " +mScore+"/"+mQuestionLibrary.getLength() + " points !");
+            viewScore.setPositiveButton("Voir mon score", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    /*Intent resultIntent = new Intent(getApplicationContext(), Ranking.class);
+                    resultIntent.putExtra(EXTRA_SCORE, mScore);
+                    setResult(RESULT_OK, resultIntent);*/
+                    finish();
+                }
+            });
+            viewScore.create().show();
         }
     }
 

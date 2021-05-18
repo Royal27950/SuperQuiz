@@ -1,5 +1,6 @@
 package com.example.superquiz;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Geography extends AppCompatActivity {
@@ -58,7 +60,19 @@ public class Geography extends AppCompatActivity {
             mQuestionNumber++;
         }
         else {
-            finish();
+            AlertDialog.Builder viewScore = new AlertDialog.Builder(this);
+            viewScore.setTitle("Bravo !");
+            viewScore.setMessage("Vous avez eu " +mScore+"/"+mQuestionLibrary.getLength() + " points !");
+            viewScore.setPositiveButton("Voir mon score", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    /*Intent resultIntent = new Intent(getApplicationContext(), Ranking.class);
+                    resultIntent.putExtra(EXTRA_SCORE, mScore);
+                    setResult(RESULT_OK, resultIntent);*/
+                    finish();
+                }
+            });
+            viewScore.create().show();
         }
     }
 
