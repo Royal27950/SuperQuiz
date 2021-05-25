@@ -6,6 +6,7 @@ public class AttackOnTitanQuestion {
     private String question;
     private String[] choice = new String[4];
     private String answer;
+    private String highScore;
 
     public AttackOnTitanQuestion() {
 
@@ -17,6 +18,7 @@ public class AttackOnTitanQuestion {
         this.choice[2] = choices[2];
         this.choice[3] = choices[3];
         this.answer = answer;
+        this.highScore = highScore;
     }
 
     public String getQuestion() {
@@ -41,5 +43,13 @@ public class AttackOnTitanQuestion {
 
     public void setQuestion(String question) {
         this.question = question;
+    }
+
+    public String getHighScore() {
+        return highScore;
+    }
+
+    public void setHighScore(String highScore) {
+        this.highScore = highScore;
     }
 }

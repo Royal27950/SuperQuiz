@@ -29,7 +29,8 @@ public class Ranking extends AppCompatActivity {
     Spinner listCategory;
     String[] spinnerOptions = {"Histoire", "Géographie", "L'Attaque des Titans", "Pokémon", "Tokyo Ghoul", "My Hero Academia",
             "One Piece","Devine le logo", "Devine le slogan",  "The Walking Dead", "Breaking Bad", "Harry Potter", "Deadpool"};
-    TextView country, userMail, hightScoreSnk;
+    TextView country, userMail, hightScoreSnkText;
+    String hightScoreSnk;
     Locale locale;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     String uid = user.getEmail();
@@ -40,14 +41,18 @@ public class Ranking extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ranking);
 
+        AttackOnTitanQuestion attackOnTitanQuestion = new AttackOnTitanQuestion();
+
         listCategory = findViewById(R.id.listCategory);
         country = findViewById(R.id.country);
         userMail = findViewById(R.id.userMail);
-        hightScoreSnk = findViewById(R.id.score);
+        hightScoreSnkText = findViewById(R.id.score);
         //loadHighscore();
         locale = ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration()).get(0);
         country.setText(locale.getDisplayCountry());
         userMail.setText(uid);
+
+        hightScoreSnk = attackOnTitanQuestion.getHighScore();
 
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, spinnerOptions);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -58,43 +63,43 @@ public class Ranking extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-                        hightScoreSnk.setText("histoire");
+                        hightScoreSnkText.setText(hightScoreSnk);
                         break;
                     case 1:
-                        hightScoreSnk.setText("geo");
+                        hightScoreSnkText.setText("geo");
                         break;
                     case 2:
-                        hightScoreSnk.setText("snk");
+                        hightScoreSnkText.setText("snk");
                         break;
                     case 3:
-                        hightScoreSnk.setText("pkm");
+                        hightScoreSnkText.setText("pkm");
                         break;
                     case 4:
-                        hightScoreSnk.setText("tokyo");
+                        hightScoreSnkText.setText("tokyo");
                         break;
                     case 5:
-                        hightScoreSnk.setText("mha");
+                        hightScoreSnkText.setText("mha");
                         break;
                     case 6:
-                        hightScoreSnk.setText("op");
+                        hightScoreSnkText.setText("op");
                         break;
                     case 7:
-                        hightScoreSnk.setText("logo");
+                        hightScoreSnkText.setText("logo");
                         break;
                     case 8:
-                        hightScoreSnk.setText("slogan");
+                        hightScoreSnkText.setText("slogan");
                         break;
                     case 9:
-                        hightScoreSnk.setText("twd");
+                        hightScoreSnkText.setText("twd");
                         break;
                     case 10:
-                        hightScoreSnk.setText("bb");
+                        hightScoreSnkText.setText("bb");
                         break;
                     case 11:
-                        hightScoreSnk.setText("hp");
+                        hightScoreSnkText.setText("hp");
                         break;
                     case 12:
-                        hightScoreSnk.setText("deadpool");
+                        hightScoreSnkText.setText("deadpool");
                         break;
                 }
             }

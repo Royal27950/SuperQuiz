@@ -19,7 +19,7 @@ public class QuizDbHelper extends SQLiteOpenHelper {
     // Database name
     public static String DATABASE_QUESTION = "questionBankAttackOnTitan.db";
     // Current version of database
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
     // Database table name
     private static final String TABLE_QUESTION = "QuestionBankAttackOnTitan";
     // All fields used in database table
@@ -30,6 +30,7 @@ public class QuizDbHelper extends SQLiteOpenHelper {
     private static final String CHOICE3 = "choice3";
     private static final String CHOICE4 = "choice4";
     private static final String ANSWER = "answer";
+    private static final String HIGHSCORE = "highscore";
 
     // Question Table Create Query in this string
     private static final String CREATE_TABLE_QUESTION = "CREATE TABLE "
@@ -40,6 +41,7 @@ public class QuizDbHelper extends SQLiteOpenHelper {
             + CHOICE2 + " TEXT, "
             + CHOICE3 + " TEXT, "
             + CHOICE4 + " TEXT, "
+            + HIGHSCORE + " INTEGER, "
             + ANSWER + " TEXT);";
 
     public QuizDbHelper(Context context) {
@@ -126,5 +128,14 @@ public class QuizDbHelper extends SQLiteOpenHelper {
             Collections.shuffle(questionArrayList);
         }
         return questionArrayList;
+    }
+
+    void addHighScore(int highscore){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(HIGHSCORE, highscore );
+        long result = db.insert(TABLE_QUESTION, null, cv);
+
+
     }
 }
