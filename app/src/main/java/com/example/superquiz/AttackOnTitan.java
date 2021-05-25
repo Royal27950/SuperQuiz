@@ -68,8 +68,10 @@ public class AttackOnTitan extends AppCompatActivity {
             mQuestionNumber++;
         }
         else {
+
             QuizDbHelper quizDbHelper = new QuizDbHelper(AttackOnTitan.this);
-            quizDbHelper.addHighScore(mScore);
+            quizDbHelper.delete();
+            //quizDbHelper.addHighScore(mScore);
             AlertDialog.Builder viewScore = new AlertDialog.Builder(this);
             viewScore.setTitle("Bravo !");
             viewScore.setMessage("Vous avez eu " +mScore+"/"+mQuestionLibrary.getLength() + " points !");

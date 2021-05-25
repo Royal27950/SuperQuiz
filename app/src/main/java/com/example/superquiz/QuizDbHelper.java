@@ -138,4 +138,8 @@ public class QuizDbHelper extends SQLiteOpenHelper {
 
 
     }
+    public void delete() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("delete from "+TABLE_QUESTION+" where highscore='1'");
+    }
 }
