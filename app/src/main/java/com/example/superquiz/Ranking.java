@@ -32,6 +32,7 @@ public class Ranking extends AppCompatActivity {
     TextView country, userMail, hightScoreSnkText;
     String hightScoreSnk;
     Locale locale;
+    //get the current user's email
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     String uid = user.getEmail();
 
@@ -49,6 +50,7 @@ public class Ranking extends AppCompatActivity {
         hightScoreSnkText = findViewById(R.id.score);
         //loadHighscore();
         locale = ConfigurationCompat.getLocales(Resources.getSystem().getConfiguration()).get(0);
+        //retrieves the user's connection country
         country.setText(locale.getDisplayCountry());
         userMail.setText(uid);
 
@@ -58,11 +60,12 @@ public class Ranking extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         listCategory.setAdapter(adapter);
 
+        //displays the score according to the question category
         listCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
-                    case 0:
+                    case 0://it's a test
                         hightScoreSnkText.setText(hightScoreSnk);
                         break;
                     case 1:

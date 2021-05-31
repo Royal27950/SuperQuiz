@@ -14,11 +14,7 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        //Rediriger vers la page de connexion "Connect" après 3 secondes
-
-
-
-        //Permet de lancer le runnable (donc le changement de page) après 3 secondes
+        //Allows you to launch the runnable after 3 seconds
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
