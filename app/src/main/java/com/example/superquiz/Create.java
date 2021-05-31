@@ -37,6 +37,7 @@ public class Create extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
 
+        //Allows you to keep the phone orientation in portrait mode
         int currentOrientation = getResources().getConfiguration().orientation;
         if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE){
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -50,21 +51,21 @@ public class Create extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
 
-        //Vérifie si l'utilisateur possède déjà un compte
+        //Check if the user already has an account
         if (fAuth.getCurrentUser() != null){
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
             finish();
         }
 
 
-        //Au clique du bouton "Créer", vérifie les conditions suivantes :
+        //By clicking on the "Créer" button, check the following conditions :
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String id = userID.getText().toString().trim();
                 String password = userPassword.getText().toString().trim();
 
-                //Vérifie si les chammps "identifiant" et "mot de passe" sont vides
+                //Check if the "username" and "password" fields are empty
                 if (TextUtils.isEmpty(id)){
                     userID.setError("L'identifiant est requis !");
                     return;
@@ -74,16 +75,16 @@ public class Create extends AppCompatActivity {
                     return;
                 }
 
-                //Vérifie que le mot de passe contient au minimum 6 caractères
+                //Check that the password contains at least 6 characters
                 if (password.length() < 6 ){
                     userPassword.setError("Le mot de passe doit avoir au moins 6 caractères !");
                     return;
                 }
 
-                //Rend la bar de chargement visible (qui est invisible par défaut)
+                //Make the loading bar visible (which is invisible by default)
                 progressBar.setVisibility(View.VISIBLE);
 
-                //Créer le compte dans Firebase
+                //Create the account in Firebase
                 fAuth.createUserWithEmailAndPassword(id, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -101,7 +102,7 @@ public class Create extends AppCompatActivity {
 
     }
 
-    //Au clique de l'image "oeil" permet de voir ou de cacher le champ mot de passe
+    //Click on the "eye" image to see or hide the password field
     public void showHidePass(View view){
 
         if(view.getId()==R.id.show_pass_btn){
@@ -122,7 +123,7 @@ public class Create extends AppCompatActivity {
         }
     }
 
-    //Au clique du bouton "Déconnexion" déconnecte l'utilisateur et le renvoie à la page de connexion
+    //Back to the login page
     public void connect(View v){
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(getApplicationContext(), Connect.class));

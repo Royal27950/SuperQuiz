@@ -12,10 +12,6 @@
         android:roundIcon="@mipmap/logoicon"
         android:supportsRtl="true"
         android:theme="@style/Theme.SuperQuiz">
-        <activity android:name=".GuessTheLogo5" />
-        <activity android:name=".GuessTheLogo4" />
-        <activity android:name=".GuessTheLogo3" />
-        <activity android:name=".GuessTheLogo2" />
         <activity android:name=".Ranking" />
         <activity android:name=".Deadpool" />
         <activity android:name=".HarryPotter" />

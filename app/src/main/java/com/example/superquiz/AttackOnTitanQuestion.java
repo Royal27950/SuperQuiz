@@ -1,6 +1,6 @@
 package com.example.superquiz;
-// class Question to describe on question for test:
-// question itself, multiple choices to answer, and correct answer
+// class AttackOnTitanQuestion to describe on question for test:
+// question itself, multiple choices to answer, correct answer, and the best score (test)
 public class AttackOnTitanQuestion {
 
     private String question;
@@ -45,6 +45,7 @@ public class AttackOnTitanQuestion {
         this.question = question;
     }
 
+    /* these are tests to add the best scores to the database */
     public String getHighScore() {
         return highScore;
     }

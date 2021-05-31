@@ -1,16 +1,14 @@
 package com.example.superquiz;
-// class WalkingDeadQuestion to describe on question for test:
-// question itself, multiple choices to answer, and correct answer
-public class WalkingDeadQuestion {
 
+public class GuessTheLogoQuestion {
     private String question;
     private String[] choice = new String[4];
     private String answer;
 
-    public WalkingDeadQuestion() {
+    public GuessTheLogoQuestion() {
 
     }
-    public WalkingDeadQuestion(String question, String[] choices, String answer) {
+    public GuessTheLogoQuestion(String question, String[] choices, String answer) {
         this.question = question;
         this.choice[0] = choices[0];
         this.choice[1] = choices[1];

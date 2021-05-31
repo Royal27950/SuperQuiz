@@ -91,8 +91,8 @@ public class QuizDbHelperGuessTheSlogan extends SQLiteOpenHelper {
         List<GuessTheSloganQuestion> questionArrayList = new ArrayList<>();
         String selectQuery = "SELECT  * FROM " + TABLE_QUESTION;
 
-        SQLiteDatabase gussTheSloganDb = this.getReadableDatabase();
-        Cursor c = gussTheSloganDb.rawQuery(selectQuery, null);
+        SQLiteDatabase guessTheSloganDb = this.getReadableDatabase();
+        Cursor c = guessTheSloganDb.rawQuery(selectQuery, null);
 
         // looping through all records and adding to the list
         if (c.moveToFirst()) {

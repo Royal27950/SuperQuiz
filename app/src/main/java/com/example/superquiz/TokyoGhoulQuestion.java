@@ -1,5 +1,5 @@
 package com.example.superquiz;
-// class Question to describe on question for test:
+// class TokyoGhoulQuestion to describe on question for test:
 // question itself, multiple choices to answer, and correct answer
 public class TokyoGhoulQuestion {
 

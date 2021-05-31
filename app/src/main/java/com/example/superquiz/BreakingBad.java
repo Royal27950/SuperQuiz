@@ -1,6 +1,8 @@
 package com.example.superquiz;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -31,6 +33,12 @@ public class BreakingBad extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_breaking_bad);
+
+        //Allows you to keep the phone orientation in portrait mode
+        int currentOrientation = getResources().getConfiguration().orientation;
+        if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
         // setup screen for the first question with four alternative to answer
         mScoreViewBreakingBad = (TextView)findViewById(R.id.scoreBreakingBad);
         mQuestionView = (TextView)findViewById(R.id.questionBreakingBad);

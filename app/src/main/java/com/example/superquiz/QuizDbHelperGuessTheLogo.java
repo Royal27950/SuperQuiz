@@ -1,27 +1,21 @@
 package com.example.superquiz;
 
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-// class to provide operations with database
-
-public class QuizDbHelper extends SQLiteOpenHelper {
+public class QuizDbHelperGuessTheLogo extends SQLiteOpenHelper{
 
     // Database name
-    public static String DATABASE_QUESTION = "questionBankAttackOnTitan.db";
+    public static String DATABASE_QUESTION = "questionBankGuessTheLogo.db";
     // Current version of database
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 3;
     // Database table name
-    private static final String TABLE_QUESTION = "QuestionBankAttackOnTitan";
+    private static final String TABLE_QUESTION = "QuestionBankGuessTheLogo";
     // All fields used in database table
     private static final String KEY_ID = "id";
     private static final String QUESTION = "question";
@@ -30,21 +24,19 @@ public class QuizDbHelper extends SQLiteOpenHelper {
     private static final String CHOICE3 = "choice3";
     private static final String CHOICE4 = "choice4";
     private static final String ANSWER = "answer";
-    private static final String HIGHSCORE = "highscore";
 
     // Question Table Create Query in this string
     private static final String CREATE_TABLE_QUESTION = "CREATE TABLE "
             + TABLE_QUESTION + "(" + KEY_ID
             + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + QUESTION + " TEXT,"
+            + QUESTION + " BLOB,"
             + CHOICE1 + " TEXT, "
             + CHOICE2 + " TEXT, "
             + CHOICE3 + " TEXT, "
             + CHOICE4 + " TEXT, "
-            + HIGHSCORE + " INTEGER, "
             + ANSWER + " TEXT);";
 
-    public QuizDbHelper(Context context) {
+    public QuizDbHelperGuessTheLogo(Context context) {
         super(context, DATABASE_QUESTION, null, DATABASE_VERSION);
     }
 
@@ -67,12 +59,11 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-
     /**
      * This method is used to add question detail in question Table
      */
-    public long addInitialQuestionAttackOnTitan (AttackOnTitanQuestion question) {
-        SQLiteDatabase attackOnTitanDb = this.getWritableDatabase();
+    public long addInitialQuestionGuessTheLogo (GuessTheLogoQuestion question) {
+        SQLiteDatabase guessTheLogoDb = this.getWritableDatabase();
         // Creating content values
         ContentValues values = new ContentValues();
         values.put(QUESTION, question.getQuestion());
@@ -82,7 +73,7 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         values.put(CHOICE4,  question.getChoice(3));
         values.put(ANSWER, question.getAnswer());
         // insert row in question table
-        long insert = attackOnTitanDb.insert(TABLE_QUESTION, null, values);
+        long insert = guessTheLogoDb.insert(TABLE_QUESTION, null, values);
         return insert;
     }
 
@@ -92,17 +83,17 @@ public class QuizDbHelper extends SQLiteOpenHelper {
      * To extract data from database and save it Arraylist of data type
      * Question
      */
-    public List<AttackOnTitanQuestion> getAllQuestionsListAttackOnTitan() {
-        List<AttackOnTitanQuestion> questionArrayList = new ArrayList<>();
+    public List<GuessTheLogoQuestion> getAllQuestionsListGuessTheLogo() {
+        List<GuessTheLogoQuestion> questionArrayList = new ArrayList<>();
         String selectQuery = "SELECT  * FROM " + TABLE_QUESTION;
 
-        SQLiteDatabase attackOnTitandb = this.getReadableDatabase();
-        Cursor c = attackOnTitandb.rawQuery(selectQuery, null);
+        SQLiteDatabase gussTheLogoDb = this.getReadableDatabase();
+        Cursor c = gussTheLogoDb.rawQuery(selectQuery, null);
 
         // looping through all records and adding to the list
         if (c.moveToFirst()) {
             do {
-                AttackOnTitanQuestion question = new AttackOnTitanQuestion();
+                GuessTheLogoQuestion question = new GuessTheLogoQuestion();
 
                 String questText= c.getString(c.getColumnIndex(QUESTION));
                 question.setQuestion(questText);
@@ -128,14 +119,5 @@ public class QuizDbHelper extends SQLiteOpenHelper {
             Collections.shuffle(questionArrayList);
         }
         return questionArrayList;
-    }
-
-    void addHighScore(int highscore){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-        cv.put(HIGHSCORE, highscore );
-        long result = db.insert(TABLE_QUESTION, null, cv);
-
-
     }
 }

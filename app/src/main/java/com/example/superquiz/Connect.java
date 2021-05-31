@@ -42,6 +42,7 @@ public class Connect extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connect);
 
+        //Allows you to keep the phone orientation in portrait mode
         int currentOrientation = getResources().getConfiguration().orientation;
         if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE){
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -63,14 +64,14 @@ public class Connect extends AppCompatActivity {
             }
         });
 
-        //Au clique du bouton "Se connecter" vérifie les conditions suivantes :
+        //By clicking on the "Se connecter" button, check the following conditions :
         connectBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String id = userID.getText().toString().trim();
                 String password = userPassword.getText().toString().trim();
 
-                //Vérifie si les chammps "identifiant" et "mot de passe" sont vides
+                //Check if the "username" and "password" fields are empty
                 if (TextUtils.isEmpty(id)){
                     userID.setError("L'identifiant est requis !");
                     return;
@@ -80,16 +81,16 @@ public class Connect extends AppCompatActivity {
                     return;
                 }
 
-                //Vérifie que le mot de passe contient au minimum 6 caractères
+                //Check that the password contains at least 6 characters
                 if (password.length() < 6 ){
                     userPassword.setError("Le mot de passe doit avoir au moins 6 caractères !");
                     return;
                 }
 
-                //Rend la bar de chargement visible (qui est invisible par défaut)
+                //Make the loading bar visible (which is invisible by default)
                 progressBar.setVisibility(View.VISIBLE);
 
-                //Identifie l'utilisateur
+                //Identifies the user
                 fAuth.signInWithEmailAndPassword(id, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -106,11 +107,11 @@ public class Connect extends AppCompatActivity {
             }
         });
 
-        //Au clique du texte "mot de passe oublié ?"
+        //At the click of the text "mot de passe oublié ?"
         textForgetPwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Créer une boite de dialogue pour voir le mail de l'utilisateur
+                //Create a dialog box to see the user's email
                 EditText resetMail = new EditText(v.getContext());
                 AlertDialog.Builder resetPwdDialog = new AlertDialog.Builder(v.getContext());
                 resetPwdDialog.setTitle("Réinitialiser votre mot de passe ?");
@@ -120,7 +121,7 @@ public class Connect extends AppCompatActivity {
                 resetPwdDialog.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //Extrait le mail et envoie un mail pour changer le mot de passe
+                        //Extract the email and send an email to change the password
                         String userMail = resetMail.getText().toString();
                         fAuth.sendPasswordResetEmail(userMail).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
@@ -139,7 +140,7 @@ public class Connect extends AppCompatActivity {
                 resetPwdDialog.setNegativeButton("Non", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //Ferme la pop-up
+                        //Close the pop-up
                     }
                 });
                 resetPwdDialog.create().show();
@@ -147,7 +148,7 @@ public class Connect extends AppCompatActivity {
         });
 
     }
-    //Au clique de l'image "oeil" permet de voir ou de cacher le champ mot de passe
+    //Click on the "eye" image to see or hide the password field
     public void showHidePass(View view){
 
         if(view.getId()==R.id.show_pass_btn){

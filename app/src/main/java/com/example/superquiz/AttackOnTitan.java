@@ -2,6 +2,8 @@ package com.example.superquiz;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -10,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +21,8 @@ public class AttackOnTitan extends AppCompatActivity {
     private AttackOnTitanQuestionBank mQuestionLibrary = new AttackOnTitanQuestionBank();
 
     //public static  final String EXTRA_SCORE = "extraScore";
+
+    private static final String KEY_QUESTION = "question_key";
 
     private TextView mScoreViewAttackOnTitan;   // view for current total score
     private TextView mQuestionView;  //current question to answer
@@ -36,6 +41,12 @@ public class AttackOnTitan extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attack_on_titan);
+
+        //Allows you to keep the phone orientation in portrait mode
+        int currentOrientation = getResources().getConfiguration().orientation;
+        if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
         // setup screen for the first question with four alternative to answer
         mScoreViewAttackOnTitan = (TextView)findViewById(R.id.scoreAttackOnTitan);
         mQuestionView = (TextView)findViewById(R.id.questionAttackOnTitan);
@@ -44,8 +55,6 @@ public class AttackOnTitan extends AppCompatActivity {
         mButtonChoice3 = (Button)findViewById(R.id.r3AttackOnTitan);
         mButtonChoice4 = (Button)findViewById(R.id.r4AttackOnTitan);
         this.activity = this;
-
-
 
         mQuestionLibrary.initQuestions(getApplicationContext());
         updateQuestion();
@@ -68,9 +77,10 @@ public class AttackOnTitan extends AppCompatActivity {
             mQuestionNumber++;
         }
         else {
+            /* These are tests to add the best score to the database */
 
-            QuizDbHelper quizDbHelper = new QuizDbHelper(AttackOnTitan.this);
-            quizDbHelper.delete();
+           // QuizDbHelper quizDbHelper = new QuizDbHelper(AttackOnTitan.this);
+            //quizDbHelper.delete();
             //quizDbHelper.addHighScore(mScore);
             AlertDialog.Builder viewScore = new AlertDialog.Builder(this);
             viewScore.setTitle("Bravo !");
